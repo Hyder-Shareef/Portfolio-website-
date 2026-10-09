@@ -4,15 +4,13 @@
 
 @layer base {
   :root {
-    --bg-dark: #0A0B0E;
-    --bg-surface: #12141A;
-    --bg-surface-light: #181A22;
-    --text-main: #F3F4F6;
-    --text-sub: #9CA3AF;
-    --text-dim: #6B7280;
+    --bg-dark: #090A0D;
+    --bg-surface: #111216;
+    --text-main: #EDEDE8;
+    --text-sub: #8F919B;
+    --text-dim: #5A5B64;
     --accent: #FF4D00;
     --accent-cyan: #00E5FF;
-    --accent-green: #10B981;
     --border-hairline: rgba(255, 255, 255, 0.08);
     --border-active: rgba(255, 255, 255, 0.2);
   }
@@ -41,7 +39,7 @@
 
   ::selection {
     background: #FF4D00;
-    color: #0A0B0E;
+    color: #090A0D;
   }
 }
 
@@ -50,13 +48,13 @@ body.blueprint-mode {
   background-color: #041424 !important;
   color: #5ce1e6 !important;
   background-image: 
-    linear-gradient(rgba(0, 229, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.12) 1px, transparent 1px) !important;
-  background-size: 24px 24px !important;
+    linear-gradient(rgba(0, 229, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.15) 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
 }
 
 body.blueprint-mode * {
-  border-color: rgba(0, 229, 255, 0.25) !important;
+  border-color: rgba(0, 229, 255, 0.3) !important;
 }
 
 body.blueprint-mode .text-accent {
@@ -65,22 +63,22 @@ body.blueprint-mode .text-accent {
 
 /* Wireframe Mode Easter Egg */
 body.wireframe-mode * {
-  outline: 1px solid rgba(0, 229, 255, 0.35) !important;
+  outline: 1px solid rgba(0, 229, 255, 0.4) !important;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0B0E;
+  background: #090A0D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.14);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -91,19 +89,19 @@ body.wireframe-mode * {
 .bg-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Editorial typography clamps */
+/* Editorial typography clamps - ORIGINAL VALUES */
 .hero-title {
-  font-size: clamp(2.5rem, 9.5vw, 10.5rem);
-  line-height: 0.92;
+  font-size: clamp(2.75rem, 11vw, 13.5rem);
+  line-height: 0.9;
   letter-spacing: -0.04em;
   font-weight: 800;
   text-transform: uppercase;
@@ -111,16 +109,16 @@ body.wireframe-mode * {
 }
 
 .chapter-title {
-  font-size: clamp(1.75rem, 4.5vw, 4.75rem);
-  line-height: 1.05;
+  font-size: clamp(1.75rem, 5.5vw, 6rem);
+  line-height: 1.02;
   letter-spacing: -0.03em;
-  font-weight: 800;
+  font-weight: 700;
   word-break: break-word;
 }
 
 .subheading-editorial {
-  font-size: clamp(1.1rem, 2.5vw, 2.25rem);
-  line-height: 1.2;
+  font-size: clamp(1.1rem, 3vw, 2.5rem);
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
@@ -144,18 +142,25 @@ body.wireframe-mode * {
   border-right: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Subtle accent glow */
+/* Hold to skim motion blur */
+.skim-active {
+  filter: blur(1px) contrast(1.1);
+  transform: scale(0.98);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Glowing accent */
 .accent-glow {
-  box-shadow: 0 0 24px rgba(255, 77, 0, 0.2);
+  box-shadow: 0 0 25px rgba(255, 77, 0, 0.25);
 }
 
 .cyan-glow {
-  box-shadow: 0 0 24px rgba(0, 229, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);
 }
 
-/* Smooth text stroke */
+/* Text stroke */
 .text-stroke {
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
   color: transparent;
   transition: all 0.3s ease;
 }
