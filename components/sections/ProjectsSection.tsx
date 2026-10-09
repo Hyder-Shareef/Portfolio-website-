@@ -8,6 +8,7 @@ import ProjectModal from "./ProjectModal";
 
 const filterCategories = [
   "ALL",
+  "Telemetry / F1 AI Simulation",
   "HealthTech / Applied AI",
   "Data Visualization / Geospatial",
   "Cybersecurity / AI Systems",
@@ -37,7 +38,7 @@ export default function ProjectsSection() {
             </span>
           </div>
           <div className="text-[11px] uppercase tracking-wider text-text-dim">
-            6 PRODUCTION PLATFORMS & ARCHITECTURAL CASE STUDIES
+            {projectsData.length} PRODUCTION PLATFORMS & ARCHITECTURAL CASE STUDIES
           </div>
         </div>
 
@@ -52,7 +53,7 @@ export default function ProjectsSection() {
             </h2>
           </div>
           <p className="max-w-md font-mono text-xs text-text-secondary leading-relaxed">
-            Real-world platforms spanning health OCR extraction, 3D geospatial telemetry, automated network security anomaly detection, and ACID relational engines.
+            Real-world platforms spanning F1 racing telemetry simulation, health OCR extraction, 3D geospatial telemetry, automated network security anomaly detection, and ACID relational engines.
           </p>
         </div>
 

@@ -87,6 +87,17 @@ export default function CommandPalette({ isOpen, onClose }: CommandPaletteProps)
 
     // Projects
     {
+      id: "proj-kyntra",
+      category: "PROJECTS",
+      title: "Case Study: KYNTRA",
+      subtitle: "Auditable F1 Energy & Overtake Intelligence",
+      icon: <Sparkles size={14} className="text-accent" />,
+      action: () => {
+        window.location.hash = "work";
+        onClose();
+      },
+    },
+    {
       id: "proj-heault",
       category: "PROJECTS",
       title: "Case Study: HEAULT",

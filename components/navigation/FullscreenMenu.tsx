@@ -13,7 +13,7 @@ interface FullscreenMenuProps {
 const menuItems = [
   { num: "00", title: "HOME", href: "#hero", tag: "DIGITAL CORE & ENTRY" },
   { num: "01", title: "ABOUT", href: "#about", tag: "FOUNDATIONS & PERSPECTIVE" },
-  { num: "02", title: "SELECTED WORK", href: "#work", tag: "6 ARCHITECTURAL CASE STUDIES" },
+  { num: "02", title: "SELECTED WORK", href: "#work", tag: "7 ARCHITECTURAL CASE STUDIES" },
   { num: "03", title: "EXPERIENCE", href: "#experience", tag: "RESIDENCIES & EDUCATION" },
   { num: "04", title: "CAPABILITIES", href: "#capabilities", tag: "3D SKILL CONSTELLATION" },
   { num: "05", title: "BEYOND SCREEN", href: "#leadership", tag: "PUBLIC DEMOS & SPEAKING" },
