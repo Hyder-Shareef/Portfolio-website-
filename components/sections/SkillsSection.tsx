@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { Sparkles, Network, ArrowRight, Layers, Cpu, Database, Shield, Wrench } from "lucide-react";
+import { Sparkles, Network, Layers, Cpu, Database, Shield, Wrench } from "lucide-react";
 import { skillsGraph, skillCategories, SkillNode } from "@/data/skills";
 import { soundFx } from "@/lib/sound";
 
@@ -24,13 +24,13 @@ export default function SkillsSection() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 font-mono text-xs text-text-muted hairline-bottom pb-4">
           <div className="flex items-center gap-3">
-            <span className="text-accent font-bold">Nº004</span>
+            <span className="text-accent font-bold">04</span>
             <span className="text-text-primary uppercase tracking-widest font-semibold">
-              / CAPABILITIES & SYSTEM GRAPH
+              / TECHNICAL CAPABILITIES
             </span>
           </div>
           <div className="text-[11px] uppercase tracking-wider text-text-dim">
-            3D CONSTELLATION · RELATIONAL INTERSECTION · FULL STACK
+            3D INTERACTION GRAPH · FULL STACK · MACHINE LEARNING
           </div>
         </div>
 
@@ -44,8 +44,8 @@ export default function SkillsSection() {
               </span>
             </h2>
           </div>
-          <p className="max-w-md font-mono text-xs text-text-secondary leading-relaxed">
-            Drag, rotate, and interact with the 3D orbital constellation. Each node maps interconnected computational competencies across AI, databases, and systems.
+          <p className="max-w-md text-xs sm:text-sm text-text-secondary leading-relaxed">
+            Interact with the 3D orbital constellation. Drag, rotate, and click any node to inspect interconnected competencies across AI, databases, and systems.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export default function SkillsSection() {
               }}
               activeNodeId={activeNode?.id || null}
             />
-            <div className="absolute top-4 left-4 font-mono text-[10px] text-text-muted bg-background/80 px-2.5 py-1 rounded border border-border">
+            <div className="absolute top-4 left-4 font-mono text-[10px] text-text-muted bg-background/80 px-2.5 py-1 rounded border border-border backdrop-blur-sm">
               DRAG TO ROTATE // CLICK NODE TO INSPECT
             </div>
           </div>
@@ -92,8 +92,8 @@ export default function SkillsSection() {
           {/* Active Node Detail Dossier */}
           <div className="lg:col-span-4 bg-surface border border-border p-6 sm:p-7 rounded-2xl space-y-6 h-fit">
             <div className="flex items-center justify-between border-b border-border pb-3">
-              <span className="font-mono text-xs text-accent uppercase tracking-widest">
-                // NODE TELEMETRY
+              <span className="font-mono text-xs text-accent uppercase tracking-widest font-semibold">
+                NODE TELEMETRY
               </span>
               <span
                 className="w-3 h-3 rounded-full"
@@ -104,19 +104,19 @@ export default function SkillsSection() {
             {activeNode ? (
               <div className="space-y-5">
                 <div>
-                  <h3 className="font-display font-extrabold text-3xl text-text-primary">
+                  <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">
                     {activeNode.name}
                   </h3>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="font-mono text-xs text-accent-cyan">{activeNode.category}</span>
                     <span className="text-text-muted">•</span>
-                    <span className="font-mono text-xs text-text-secondary">{activeNode.level}</span>
+                    <span className="font-mono text-xs text-text-secondary font-medium">{activeNode.level}</span>
                   </div>
                 </div>
 
                 <div className="space-y-2 pt-2 border-t border-border">
-                  <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
-                    GRAPH INTERCONNECTIONS
+                  <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest block">
+                    RELATED NODES & INTEGRATIONS
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {activeNode.connections.map((cId) => {
@@ -131,7 +131,7 @@ export default function SkillsSection() {
                             }
                           }}
                           data-cursor="LINK"
-                          className="font-mono text-xs px-2.5 py-1 bg-surface-light hover:bg-accent hover:text-background border border-border rounded text-text-primary transition-colors"
+                          className="font-mono text-xs px-2.5 py-1 bg-surface-light hover:bg-accent hover:text-background border border-border rounded text-text-primary transition-colors font-medium"
                         >
                           → {target?.name || cId}
                         </button>
@@ -142,46 +142,9 @@ export default function SkillsSection() {
               </div>
             ) : (
               <div className="font-mono text-xs text-text-muted">
-                Click any sphere in the 3D universe to inspect its connection graph.
+                Click any sphere in the 3D constellation to inspect its connection graph.
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Categorized Skills Grid Overview */}
-        <div className="space-y-4 pt-8 hairline-top">
-          <div className="font-mono text-xs text-accent uppercase tracking-widest">
-            // COMPLETE CAPABILITY MATRIX ({filteredSkills.length} NODES)
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {filteredSkills.map((skill) => (
-              <div
-                key={skill.id}
-                onClick={() => {
-                  soundFx.click();
-                  setActiveNode(skill);
-                }}
-                data-cursor="LINK"
-                className={`p-3.5 rounded-xl border transition-all cursor-pointer ${
-                  activeNode?.id === skill.id
-                    ? "bg-surface border-accent shadow-md scale-105"
-                    : "bg-surface/50 border-border hover:border-text-muted hover:bg-surface"
-                }`}
-              >
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span
-                    className="w-2 h-2 rounded-full shrink-0"
-                    style={{ backgroundColor: skill.color }}
-                  />
-                  <span className="font-display font-bold text-sm text-text-primary truncate">
-                    {skill.name}
-                  </span>
-                </div>
-                <div className="font-mono text-[10px] text-text-muted uppercase">
-                  {skill.category}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>

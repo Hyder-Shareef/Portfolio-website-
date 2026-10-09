@@ -16,13 +16,13 @@ export default function ExperienceSection() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 font-mono text-xs text-text-muted hairline-bottom pb-4">
           <div className="flex items-center gap-3">
-            <span className="text-accent font-bold">Nº003</span>
+            <span className="text-accent font-bold">03</span>
             <span className="text-text-primary uppercase tracking-widest font-semibold">
-              / EXPERIENCE & RIGOR
+              / EXPERIENCE & EDUCATION
             </span>
           </div>
           <div className="text-[11px] uppercase tracking-wider text-text-dim">
-            RESIDENCIES · AI LABS · CYBERSECURITY · COMMUNITY
+            TECHNICAL RESIDENCIES · APPLIED LABS · ACADEMIC RIGOR
           </div>
         </div>
 
@@ -34,8 +34,8 @@ export default function ExperienceSection() {
               PRACTICAL IMPACT
             </span>
           </h2>
-          <p className="max-w-xl font-mono text-xs text-text-secondary leading-relaxed">
-            Hands-on technical residencies, applied AI research, hands-on security modeling, and engineering community leadership.
+          <p className="max-w-xl text-xs sm:text-sm text-text-secondary leading-relaxed">
+            Hands-on software residencies, applied AI research, security modeling, and engineering community leadership.
           </p>
         </div>
 
@@ -44,7 +44,7 @@ export default function ExperienceSection() {
           {/* Left: Interactive Role Switcher */}
           <div className="lg:col-span-5 space-y-3">
             <div className="font-mono text-xs text-text-muted uppercase tracking-widest pb-2 border-b border-border">
-              // SELECT ENGAGEMENT
+              SELECT POSITION / ROLE
             </div>
             {experiencesData.map((exp) => {
               const isActive = exp.id === activeExpId;
@@ -65,10 +65,10 @@ export default function ExperienceSection() {
                 >
                   <div className="flex justify-between items-start">
                     <div>
-                      <div className="font-mono text-[10px] text-accent tracking-widest uppercase mb-1">
+                      <div className="font-mono text-[10px] text-accent tracking-widest uppercase mb-1 font-semibold">
                         {exp.type}
                       </div>
-                      <h3 className="font-display font-bold text-lg text-text-primary">
+                      <h3 className="font-display font-bold text-base sm:text-lg text-text-primary">
                         {exp.role}
                       </h3>
                       <p className="text-xs text-accent-cyan font-mono mt-0.5">
@@ -96,7 +96,7 @@ export default function ExperienceSection() {
                   @{currentExp.organization} {currentExp.location ? `· ${currentExp.location}` : ""}
                 </p>
               </div>
-              <span className="font-mono text-xs text-text-muted px-3 py-1 bg-surface-light rounded border border-border">
+              <span className="font-mono text-xs text-text-muted px-3 py-1 bg-surface-light rounded-md border border-border">
                 {currentExp.period}
               </span>
             </div>
@@ -104,7 +104,7 @@ export default function ExperienceSection() {
             {/* Bullet Points */}
             <div className="space-y-3">
               <span className="font-mono text-xs text-text-muted uppercase tracking-wider block">
-                // RESPONSIBILITIES & DELIVERABLES
+                KEY RESPONSIBILITIES & DELIVERABLES
               </span>
               {currentExp.description.map((desc, idx) => (
                 <div key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-text-secondary leading-relaxed">
@@ -116,7 +116,7 @@ export default function ExperienceSection() {
 
             {/* Skills applied */}
             <div className="pt-4 border-t border-border space-y-2">
-              <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
+              <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest block">
                 APPLIED CAPABILITIES & TOOLS
               </span>
               <div className="flex flex-wrap gap-1.5">
@@ -139,7 +139,7 @@ export default function ExperienceSection() {
           <div className="lg:col-span-6 space-y-6">
             <div className="flex items-center gap-2 font-mono text-xs text-text-muted uppercase tracking-widest">
               <GraduationCap size={16} className="text-accent" />
-              <span>ACADEMIC FOUNDATION</span>
+              <span>ACADEMIC FOUNDATION & DEGREES</span>
             </div>
 
             <div className="space-y-4">

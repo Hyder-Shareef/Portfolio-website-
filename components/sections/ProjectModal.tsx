@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { X, Github, ExternalLink, CheckCircle2, Layers, Cpu, BookOpen, AlertCircle } from "lucide-react";
+import { X, Github, ExternalLink, CheckCircle2, Layers, Cpu, BookOpen, Sparkles } from "lucide-react";
 import { ProjectItem } from "@/data/projects";
 import { soundFx } from "@/lib/sound";
 
@@ -52,16 +52,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       case "database":
       default:
         return (
-          <div className="w-full h-full min-h-[340px] flex flex-col items-center justify-center bg-surface-light/40 rounded-xl border border-border p-8 text-center relative overflow-hidden">
+          <div className="w-full h-full min-h-[300px] flex flex-col items-center justify-center bg-surface-light/40 rounded-xl border border-border p-8 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
-            <Cpu size={48} className="text-accent mb-4 animate-pulse" />
+            <Cpu size={44} className="text-accent mb-3 animate-pulse" />
             <div className="font-mono text-xs text-accent uppercase tracking-widest mb-1">
               RELATIONAL SCHEMA & PIPELINE ENGINE
             </div>
             <div className="font-display font-bold text-xl text-text-primary mb-2">
               {project.title}
             </div>
-            <div className="font-mono text-xs text-text-muted max-w-sm">
+            <div className="text-xs text-text-secondary max-w-sm leading-relaxed">
               Normalized PostgreSQL 16 schemas, transaction isolation levels, and atomic business logic routines.
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-background/85 backdrop-blur-xl flex items-center justify-center p-2 sm:p-4 md:p-10 overflow-y-auto animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 bg-background/85 backdrop-blur-xl flex items-center justify-center p-2 sm:p-4 md:p-8 overflow-y-auto animate-in fade-in duration-200"
       onClick={() => {
         soundFx.close();
         onClose();
@@ -84,7 +84,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         {/* Top Modal Navigation Bar */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-border bg-surface-light/50">
           <div className="flex items-center gap-2 sm:gap-3 truncate">
-            <span className="font-mono text-xs font-bold text-accent shrink-0">Nº{project.number}</span>
+            <span className="font-mono text-xs font-bold text-accent shrink-0">0{project.number}</span>
             <span className="h-3 w-px bg-border shrink-0" />
             <span className="font-mono text-[10px] sm:text-xs text-text-secondary uppercase tracking-wider truncate">
               {project.category}
@@ -96,7 +96,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               onClose();
             }}
             data-cursor="LINK"
-            className="flex items-center gap-1.5 font-mono text-xs text-text-muted hover:text-text-primary px-3 py-1 rounded-full border border-border hover:border-text-muted transition-all shrink-0 ml-2"
+            className="flex items-center gap-1.5 font-mono text-xs text-text-secondary hover:text-text-primary px-3 py-1 rounded-full border border-border hover:border-text-muted transition-all shrink-0 ml-2"
           >
             <span>CLOSE</span>
             <X size={14} />
@@ -119,10 +119,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     rel="noopener noreferrer"
                     onClick={() => soundFx.action()}
                     data-cursor="LINK"
-                    className="flex items-center gap-2 font-mono text-xs bg-surface-light hover:bg-accent hover:text-background text-text-primary px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-border transition-all"
+                    className="flex items-center gap-2 font-mono text-xs bg-surface-light hover:bg-accent hover:text-background text-text-primary px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-border transition-all font-medium"
                   >
                     <Github size={14} />
-                    <span>VIEW SOURCE</span>
+                    <span>VIEW REPO</span>
                   </a>
                 )}
                 {project.liveUrl && (
@@ -132,7 +132,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     rel="noopener noreferrer"
                     onClick={() => soundFx.action()}
                     data-cursor="LINK"
-                    className="flex items-center gap-2 font-mono text-xs bg-accent text-background px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg hover:opacity-90 transition-opacity font-semibold"
+                    className="flex items-center gap-2 font-mono text-xs bg-accent text-background px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg hover:opacity-90 transition-opacity font-bold shadow-lg shadow-accent/20"
                   >
                     <ExternalLink size={14} />
                     <span>LIVE DEMO</span>
@@ -140,11 +140,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 )}
               </div>
             </div>
-            <p className="font-mono text-xs sm:text-sm text-accent-cyan tracking-wide">{project.subtitle}</p>
+            <p className="font-mono text-xs sm:text-sm text-accent-cyan tracking-wide font-medium">{project.subtitle}</p>
           </div>
 
           {/* Interactive Visual Canvas Showcase */}
-          <div className="w-full h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden relative">
+          <div className="w-full h-60 sm:h-72 md:h-84 rounded-xl overflow-hidden relative">
             {renderVisualCanvas()}
           </div>
 
@@ -197,30 +197,30 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               <div className="lg:col-span-7 space-y-6">
                 <div>
                   <h4 className="font-mono text-xs text-text-muted uppercase tracking-wider mb-2">
-                    // THE PROBLEM
+                    THE PROBLEM
                   </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed bg-surface-light/40 p-4 rounded-lg border border-border">
+                  <p className="text-text-secondary text-xs sm:text-sm leading-relaxed bg-surface-light/40 p-4 rounded-xl border border-border">
                     {project.problem}
                   </p>
                 </div>
 
                 <div>
                   <h4 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">
-                    // TECHNICAL APPROACH
+                    TECHNICAL APPROACH
                   </h4>
-                  <p className="text-text-primary text-sm leading-relaxed bg-surface-light/40 p-4 rounded-lg border border-border">
+                  <p className="text-text-primary text-xs sm:text-sm leading-relaxed bg-surface-light/40 p-4 rounded-xl border border-border">
                     {project.approach}
                   </p>
                 </div>
 
                 <div>
                   <h4 className="font-mono text-xs text-text-muted uppercase tracking-wider mb-3">
-                    // KEY CAPABILITIES & SUBSYSTEMS
+                    KEY CAPABILITIES & SUBSYSTEMS
                   </h4>
                   <div className="space-y-2.5">
                     {project.features.map((feature, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-text-secondary">
-                        <CheckCircle2 size={15} className="text-accent-green shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-text-secondary">
+                        <CheckCircle2 size={16} className="text-accent-green shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -242,7 +242,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
                 <div className="space-y-1">
                   <span className="font-mono text-[10px] text-text-muted uppercase tracking-widest">
-                    YEAR / CYCLE
+                    YEAR
                   </span>
                   <p className="font-mono text-xs text-text-primary">{project.year}</p>
                 </div>
@@ -269,11 +269,11 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {activeTab === "architecture" && (
             <div className="space-y-4">
               <h4 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">
-                // SYSTEM PIPELINE & LAYER BREAKDOWN
+                SYSTEM PIPELINE & LAYER BREAKDOWN
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {project.architecture.map((arch, idx) => (
-                  <div key={idx} className="p-4 bg-surface-light/40 border border-border rounded-lg flex items-start gap-3">
+                  <div key={idx} className="p-4 bg-surface-light/40 border border-border rounded-xl flex items-start gap-3">
                     <Layers size={18} className="text-accent-cyan shrink-0 mt-0.5" />
                     <p className="font-mono text-xs text-text-primary leading-relaxed">{arch}</p>
                   </div>
@@ -285,13 +285,13 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {activeTab === "learnings" && (
             <div className="space-y-4">
               <h4 className="font-mono text-xs text-accent uppercase tracking-wider mb-2">
-                // ARCHITECTURAL INSIGHTS & TRADEOFFS
+                ENGINEERING INSIGHTS & TRADEOFFS
               </h4>
               <div className="space-y-3">
                 {project.learnings.map((learning, idx) => (
-                  <div key={idx} className="p-4 bg-surface-light/40 border border-border rounded-lg flex items-start gap-3">
+                  <div key={idx} className="p-4 bg-surface-light/40 border border-border rounded-xl flex items-start gap-3">
                     <BookOpen size={18} className="text-accent shrink-0 mt-0.5" />
-                    <p className="text-xs text-text-secondary leading-relaxed">{learning}</p>
+                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">{learning}</p>
                   </div>
                 ))}
               </div>

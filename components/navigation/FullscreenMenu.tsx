@@ -11,13 +11,13 @@ interface FullscreenMenuProps {
 }
 
 const menuItems = [
-  { num: "00", title: "ENTRY / INDEX", href: "#hero", tag: "DIGITAL CORE" },
-  { num: "01", title: "ABOUT", href: "#about", tag: "FOUNDATIONS & IIT JODHPUR" },
-  { num: "02", title: "SELECTED WORK", href: "#work", tag: "6 ARCHITECTURAL SYSTEMS" },
-  { num: "03", title: "EXPERIENCE", href: "#experience", tag: "LEAPSTART · SKILLSYNTH · 0XSHUNYA" },
+  { num: "00", title: "HOME", href: "#hero", tag: "DIGITAL CORE & ENTRY" },
+  { num: "01", title: "ABOUT", href: "#about", tag: "FOUNDATIONS & PERSPECTIVE" },
+  { num: "02", title: "SELECTED WORK", href: "#work", tag: "6 ARCHITECTURAL CASE STUDIES" },
+  { num: "03", title: "EXPERIENCE", href: "#experience", tag: "RESIDENCIES & EDUCATION" },
   { num: "04", title: "CAPABILITIES", href: "#capabilities", tag: "3D SKILL CONSTELLATION" },
   { num: "05", title: "BEYOND SCREEN", href: "#leadership", tag: "PUBLIC DEMOS & SPEAKING" },
-  { num: "06", title: "CONTACT", href: "#contact", tag: "COMMUNICATION CHANNELS" },
+  { num: "06", title: "CONTACT", href: "#contact", tag: "DIRECT INQUIRY & CHANNELS" },
 ];
 
 export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps) {
@@ -29,8 +29,8 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
     <div className="fixed inset-0 z-50 bg-background/98 backdrop-blur-2xl flex flex-col justify-between p-6 md:p-14 overflow-y-auto animate-in fade-in duration-300">
       {/* Background Kinetic Watermark Typography */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden opacity-5 select-none">
-        <span className="font-display font-black text-[22vw] uppercase tracking-tighter text-white whitespace-nowrap">
-          {hoveredIndex !== null ? menuItems[hoveredIndex].title : "HYDER.SYSTEM"}
+        <span className="font-display font-black text-[20vw] uppercase tracking-tighter text-white whitespace-nowrap">
+          {hoveredIndex !== null ? menuItems[hoveredIndex].title : "HYDER SHAREEF"}
         </span>
       </div>
 
@@ -75,7 +75,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           >
             <div className="flex items-baseline gap-4 md:gap-8">
               <span className="font-mono text-xs md:text-sm text-text-muted group-hover:text-accent transition-colors">
-                Nº{item.num}
+                {item.num}
               </span>
               <span className="font-display font-extrabold text-2xl sm:text-4xl md:text-6xl text-text-primary group-hover:text-accent group-hover:translate-x-3 transition-all duration-300">
                 {item.title}
@@ -92,7 +92,7 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
       {/* Bottom Metadata Bar */}
       <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 hairline-top font-mono text-xs text-text-muted">
         <div>
-          <span className="block text-[10px] text-text-secondary uppercase">COORDINATES</span>
+          <span className="block text-[10px] text-text-secondary uppercase">LOCATION</span>
           <span className="text-text-primary">{portfolioData.location}</span>
         </div>
         <div>
@@ -105,9 +105,9 @@ export default function FullscreenMenu({ isOpen, onClose }: FullscreenMenuProps)
           </a>
         </div>
         <div className="flex justify-start md:justify-end items-center gap-4">
-          <span className="text-accent-green flex items-center gap-1.5">
+          <span className="text-accent-green flex items-center gap-1.5 font-semibold">
             <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-            SYSTEM ONLINE
+            AVAILABLE TO BUILD
           </span>
         </div>
       </div>

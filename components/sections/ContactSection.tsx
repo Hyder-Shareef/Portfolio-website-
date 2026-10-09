@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Send, Copy, Check, Github, Linkedin, Mail, Clock, MapPin, Terminal, Sparkles } from "lucide-react";
-import confetti from "canvas-confetti";
+import { Send, Copy, Check, Github, Linkedin, Mail, Clock, MapPin, Sparkles } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
 import { soundFx } from "@/lib/sound";
 
@@ -35,12 +34,6 @@ export default function ContactSection() {
     navigator.clipboard.writeText(portfolioData.email);
     setCopied(true);
     soundFx.action();
-    confetti({
-      particleCount: 40,
-      spread: 60,
-      origin: { y: 0.85 },
-      colors: ["#FF4D00", "#00E5FF", "#EDEDE8"],
-    });
     setTimeout(() => setCopied(false), 2500);
   };
 
@@ -50,19 +43,13 @@ export default function ContactSection() {
 
     soundFx.action();
     setIsTransmitting(true);
-    setTransmissionStatus("ENCRYPTING PACKET & ROUTING VIA SHAREEF DIRECT API...");
+    setTransmissionStatus("Preparing direct message...");
 
     setTimeout(() => {
-      setTransmissionStatus("TRANSMISSION DISPATCHED TO HYDER SHAREEF.");
+      setTransmissionStatus("Opening email client...");
       setIsTransmitting(false);
-      confetti({
-        particleCount: 70,
-        spread: 80,
-        origin: { y: 0.7 },
-        colors: ["#FF4D00", "#00E5FF", "#22C55E"],
-      });
 
-      // Also trigger mailto fallback link for mail client
+      // Trigger mailto link for seamless local mail client dispatch
       const mailtoLink = `mailto:${portfolioData.email}?subject=Project Collaboration / Inquiry from ${encodeURIComponent(
         formData.name
       )}&body=${encodeURIComponent(
@@ -71,8 +58,8 @@ export default function ContactSection() {
       window.location.href = mailtoLink;
 
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setTransmissionStatus(null), 5000);
-    }, 1400);
+      setTimeout(() => setTransmissionStatus(null), 4000);
+    }, 600);
   };
 
   return (
@@ -81,13 +68,13 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 font-mono text-xs text-text-muted hairline-bottom pb-4">
           <div className="flex items-center gap-3">
-            <span className="text-accent font-bold">Nº006</span>
+            <span className="text-accent font-bold">06</span>
             <span className="text-text-primary uppercase tracking-widest font-semibold">
-              / DIRECT TRANSMISSION
+              / GET IN TOUCH
             </span>
           </div>
           <div className="text-[11px] uppercase tracking-wider text-text-dim">
-            COORDINATES · SECURE PACKET ROUTING · HYDERABAD
+            COLLABORATION · OPPORTUNITIES · HYDERABAD
           </div>
         </div>
 
@@ -101,47 +88,47 @@ export default function ContactSection() {
               </span>
             </h2>
           </div>
-          <p className="max-w-md font-mono text-xs text-text-secondary leading-relaxed">
+          <p className="max-w-md text-xs sm:text-sm text-text-secondary leading-relaxed">
             Whether you&apos;re discussing applied AI research, full-stack architectural builds, cybersecurity initiatives, or speaking engagements—let&apos;s connect.
           </p>
         </div>
 
-        {/* Split Grid: Left Quick Channels / Right Terminal Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        {/* Split Grid: Left Quick Channels / Right Form */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: Direct Channel Badges & Telemetry */}
           <div className="lg:col-span-5 space-y-6">
             {/* Quick Copy Email Card */}
             <div className="p-6 bg-surface border border-border rounded-2xl space-y-4">
-              <span className="font-mono text-xs text-text-muted uppercase tracking-widest">
-                // DIRECT INBOX
+              <span className="font-mono text-xs text-text-muted uppercase tracking-widest block font-semibold">
+                DIRECT INBOX
               </span>
-              <div className="flex items-center justify-between gap-2 p-3 bg-surface-light rounded-xl border border-border">
-                <span className="font-mono text-xs sm:text-sm text-text-primary truncate">
+              <div className="flex items-center justify-between gap-2 p-3.5 bg-surface-light rounded-xl border border-border">
+                <span className="font-mono text-xs sm:text-sm text-text-primary truncate font-medium">
                   {portfolioData.email}
                 </span>
                 <button
                   onClick={handleCopyEmail}
                   data-cursor="LINK"
-                  className="flex items-center gap-1.5 font-mono text-xs px-3 py-1.5 bg-accent text-background rounded-lg hover:opacity-90 transition-opacity font-bold shrink-0"
+                  className="flex items-center gap-1.5 font-mono text-xs px-3.5 py-1.5 bg-accent text-background rounded-lg hover:opacity-90 transition-opacity font-bold shrink-0"
                 >
                   {copied ? <Check size={13} /> : <Copy size={13} />}
-                  <span>{copied ? "COPIED!" : "COPY"}</span>
+                  <span>{copied ? "COPIED" : "COPY"}</span>
                 </button>
               </div>
             </div>
 
             {/* Coordinates & Local Time */}
             <div className="p-6 bg-surface border border-border rounded-2xl space-y-4 font-mono text-xs">
-              <span className="text-text-muted uppercase tracking-widest block">
-                // SYSTEM TELEMETRY
+              <span className="text-text-muted uppercase tracking-widest block font-semibold">
+                LOCATION & AVAILABILITY
               </span>
-              <div className="space-y-2.5">
+              <div className="space-y-3">
                 <div className="flex items-center justify-between text-text-secondary">
                   <div className="flex items-center gap-2">
                     <MapPin size={14} className="text-accent" />
                     <span>LOCATION</span>
                   </div>
-                  <span className="text-text-primary">{portfolioData.location}</span>
+                  <span className="text-text-primary font-medium">{portfolioData.location}</span>
                 </div>
                 <div className="flex items-center justify-between text-text-secondary">
                   <div className="flex items-center gap-2">
@@ -153,7 +140,7 @@ export default function ContactSection() {
                 <div className="flex items-center justify-between text-text-secondary">
                   <div className="flex items-center gap-2">
                     <Sparkles size={14} className="text-accent-green" />
-                    <span>AVAILABILITY</span>
+                    <span>STATUS</span>
                   </div>
                   <span className="text-accent-green font-bold">{portfolioData.status}</span>
                 </div>
@@ -162,8 +149,8 @@ export default function ContactSection() {
 
             {/* Social Channels */}
             <div className="p-6 bg-surface border border-border rounded-2xl space-y-4">
-              <span className="font-mono text-xs text-text-muted uppercase tracking-widest block">
-                // NETWORK IDENTIFIERS
+              <span className="font-mono text-xs text-text-muted uppercase tracking-widest block font-semibold">
+                SOCIAL & CODE PROFILES
               </span>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -172,7 +159,7 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   onClick={() => soundFx.action()}
                   data-cursor="LINK"
-                  className="flex items-center gap-2 font-mono text-xs px-4 py-2.5 bg-surface-light hover:bg-accent hover:text-background text-text-primary rounded-xl border border-border transition-all"
+                  className="flex items-center gap-2 font-mono text-xs px-4 py-2.5 bg-surface-light hover:bg-accent hover:text-background text-text-primary rounded-xl border border-border transition-all font-medium"
                 >
                   <Github size={15} />
                   <span>GITHUB</span>
@@ -183,29 +170,38 @@ export default function ContactSection() {
                   rel="noopener noreferrer"
                   onClick={() => soundFx.action()}
                   data-cursor="LINK"
-                  className="flex items-center gap-2 font-mono text-xs px-4 py-2.5 bg-surface-light hover:bg-accent hover:text-background text-text-primary rounded-xl border border-border transition-all"
+                  className="flex items-center gap-2 font-mono text-xs px-4 py-2.5 bg-surface-light hover:bg-accent hover:text-background text-text-primary rounded-xl border border-border transition-all font-medium"
                 >
                   <Linkedin size={15} />
                   <span>LINKEDIN</span>
+                </a>
+                <a
+                  href={`mailto:${portfolioData.email}`}
+                  onClick={() => soundFx.action()}
+                  data-cursor="LINK"
+                  className="flex items-center gap-2 font-mono text-xs px-4 py-2.5 bg-surface-light hover:bg-accent hover:text-background text-text-primary rounded-xl border border-border transition-all font-medium"
+                >
+                  <Mail size={15} />
+                  <span>EMAIL</span>
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right: Interactive Transmission Terminal */}
+          {/* Right: Message Form */}
           <div className="lg:col-span-7 bg-surface border border-border p-6 sm:p-8 rounded-2xl space-y-6">
             <div className="flex items-center justify-between border-b border-border pb-4 font-mono text-xs">
               <div className="flex items-center gap-2">
-                <Terminal size={15} className="text-accent" />
-                <span className="text-text-primary font-bold">TRANSMISSION CONSOLE</span>
+                <Mail size={15} className="text-accent" />
+                <span className="text-text-primary font-bold">SEND A DIRECT INQUIRY</span>
               </div>
-              <span className="text-[10px] text-text-muted">PORT 443 // ENCRYPTED</span>
+              <span className="text-[10px] text-text-muted">FAST RESPONSE</span>
             </div>
 
             <form onSubmit={handleSendMessage} className="space-y-4">
               <div className="space-y-1.5">
-                <label className="font-mono text-[10px] text-text-muted uppercase tracking-wider block">
-                  01 // YOUR NAME / CALLSIGN
+                <label className="font-mono text-[10px] text-text-muted uppercase tracking-wider block font-semibold">
+                  01 // YOUR NAME
                 </label>
                 <input
                   type="text"
@@ -218,13 +214,13 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-mono text-[10px] text-text-muted uppercase tracking-wider block">
+                <label className="font-mono text-[10px] text-text-muted uppercase tracking-wider block font-semibold">
                   02 // RETURN EMAIL ADDRESS
                 </label>
                 <input
                   type="email"
                   required
-                  placeholder="e.g. alex@enterprise.com"
+                  placeholder="e.g. alex@company.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-surface-light border border-border focus:border-accent rounded-xl p-3 text-sm font-mono text-text-primary placeholder:text-text-muted focus:outline-none transition-colors"
@@ -232,8 +228,8 @@ export default function ContactSection() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-mono text-[10px] text-text-muted uppercase tracking-wider block">
-                  03 // MESSAGE / SYSTEM INQUIRY
+                <label className="font-mono text-[10px] text-text-muted uppercase tracking-wider block font-semibold">
+                  03 // MESSAGE
                 </label>
                 <textarea
                   required
@@ -255,10 +251,10 @@ export default function ContactSection() {
                 type="submit"
                 disabled={isTransmitting}
                 data-cursor="SEND"
-                className="w-full py-3.5 bg-accent hover:opacity-90 text-background font-mono text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
+                className="w-full py-3.5 bg-accent hover:opacity-90 text-background font-mono text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-accent/20 disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <Send size={14} />
-                <span>{isTransmitting ? "TRANSMITTING..." : "DISPATCH TRANSMISSION"}</span>
+                <span>{isTransmitting ? "SENDING..." : "SEND MESSAGE"}</span>
               </button>
             </form>
           </div>

@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/components/navigation/Navbar";
 import FullscreenMenu from "@/components/navigation/FullscreenMenu";
 import CommandPalette from "@/components/navigation/CommandPalette";
-import Preloader from "@/components/sections/Preloader";
 import HeroSection from "@/components/sections/HeroSection";
 import IdentityMarquee from "@/components/sections/IdentityMarquee";
 import AboutSection from "@/components/sections/AboutSection";
@@ -16,7 +15,6 @@ import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCommandOpen, setIsCommandOpen] = useState(false);
 
@@ -28,44 +26,41 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-background text-text-primary overflow-hidden">
-      {/* Bootloader Sequence */}
-      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
-
+    <main className="relative min-h-screen bg-background text-text-primary overflow-hidden selection:bg-accent selection:text-background">
       {/* Main App Bar */}
       <Navbar
         onOpenMenu={() => setIsMenuOpen(true)}
         onOpenCommand={() => setIsCommandOpen(true)}
       />
 
-      {/* Hero Chapter */}
+      {/* Hero Section with High-Impact CTA */}
       <HeroSection />
 
       {/* Kinetic Identity Marquee */}
       <IdentityMarquee />
 
-      {/* About & IIT Jodhpur Chapter */}
+      {/* About & Narrative Foundations */}
       <AboutSection />
 
-      {/* Selected Architectural Work & 3D Interactive Project Dossiers */}
+      {/* Selected Architectural Work & Interactive Project Dossiers */}
       <ProjectsSection />
 
-      {/* Experience & Professional Rigor */}
+      {/* Experience, Practical Rigor & Academic Foundation */}
       <ExperienceSection />
 
-      {/* Interactive 3D Skill Constellation Universe */}
+      {/* Interactive 3D Skill Constellation & Matrix */}
       <SkillsSection />
 
       {/* Beyond The Screen: Public Demos, Stand-up Comedy & Leadership */}
       <BeyondTheScreen />
 
-      {/* Transmission Terminal & Contact */}
+      {/* Direct Contact & Collaboration Terminal */}
       <ContactSection />
 
       {/* Editorial System Footer */}
       <Footer />
 
-      {/* Fullscreen Chapter Navigation */}
+      {/* Fullscreen Navigation Modal */}
       <FullscreenMenu
         isOpen={isMenuOpen}
         onClose={() => setIsMenuOpen(false)}

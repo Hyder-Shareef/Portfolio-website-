@@ -18,10 +18,10 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 font-mono text-xs hairline-bottom pb-6 sm:pb-8">
           <div className="space-y-1">
             <div className="font-display font-black text-lg text-text-primary">
-              HYDER® <span className="text-accent">2026</span>
+              HYDER® <span className="text-accent">{portfolioData.year}</span>
             </div>
             <p className="text-[11px] text-text-secondary">
-              APPLIED AI & DATA SCIENCE · IIT JODHPUR
+              APPLIED AI & DATA SCIENCE · IIT JODHPUR · LEAPSTART
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export default function Footer() {
               data-cursor="PLAY"
               className="flex items-center gap-2 text-text-primary hover:text-accent font-mono text-xs uppercase tracking-widest transition-colors group"
             >
-              <span>BACK TO APEX</span>
+              <span>BACK TO TOP</span>
               <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform text-accent" />
             </button>
           </div>
@@ -39,7 +39,7 @@ export default function Footer() {
 
         {/* Huge Bottom Monogram Typography */}
         <div className="py-4 sm:py-6">
-          <h2 className="font-display font-black text-[10vw] md:text-[9vw] leading-none uppercase tracking-tighter text-white/5 hover:text-white/10 transition-colors duration-500">
+          <h2 className="font-display font-black text-[9vw] md:text-[8vw] leading-none uppercase tracking-tighter text-white/5 hover:text-white/10 transition-colors duration-500">
             HYDER SHAREEF
           </h2>
         </div>

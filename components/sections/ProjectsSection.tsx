@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, Github, Sparkles, Filter, Terminal, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Github, Filter, Sparkles, Layers } from "lucide-react";
 import { projectsData, ProjectItem } from "@/data/projects";
 import { soundFx } from "@/lib/sound";
 import ProjectModal from "./ProjectModal";
@@ -31,13 +31,13 @@ export default function ProjectsSection() {
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 font-mono text-xs text-text-muted hairline-bottom pb-4">
           <div className="flex items-center gap-3">
-            <span className="text-accent font-bold">Nº002</span>
+            <span className="text-accent font-bold">02</span>
             <span className="text-text-primary uppercase tracking-widest font-semibold">
               / SELECTED WORK
             </span>
           </div>
           <div className="text-[11px] uppercase tracking-wider text-text-dim">
-            6 ARCHITECTURAL SYSTEMS & COMPUTATIONAL PLATFORMS
+            6 PRODUCTION PLATFORMS & ARCHITECTURAL CASE STUDIES
           </div>
         </div>
 
@@ -51,8 +51,8 @@ export default function ProjectsSection() {
               </span>
             </h2>
           </div>
-          <p className="max-w-md font-mono text-xs text-text-secondary leading-relaxed">
-            Real-world platforms spanning health OCR extraction, 3D geospatial telemetry, automated network security anomaly detection, and ACID relational engines.
+          <p className="max-w-md text-xs sm:text-sm text-text-secondary leading-relaxed">
+            Real-world systems spanning medical OCR extraction, 3D geospatial telemetry, automated network threat detection, and ACID relational engines.
           </p>
         </div>
 
@@ -62,23 +62,29 @@ export default function ProjectsSection() {
             <Filter size={13} className="text-accent" />
             <span>FILTER:</span>
           </div>
-          {filterCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => {
-                soundFx.click();
-                setSelectedFilter(cat);
-              }}
-              data-cursor="LINK"
-              className={`font-mono text-xs px-3.5 py-1.5 rounded-full shrink-0 transition-all border ${
-                selectedFilter === cat
-                  ? "bg-accent text-background border-accent font-bold shadow-lg"
-                  : "bg-surface text-text-secondary border-border hover:border-text-muted hover:text-text-primary"
-              }`}
-            >
-              {cat === "ALL" ? "ALL (06)" : cat.split(" / ")[0]}
-            </button>
-          ))}
+          {filterCategories.map((cat) => {
+            const count =
+              cat === "ALL"
+                ? projectsData.length
+                : projectsData.filter((p) => p.category === cat).length;
+            return (
+              <button
+                key={cat}
+                onClick={() => {
+                  soundFx.click();
+                  setSelectedFilter(cat);
+                }}
+                data-cursor="LINK"
+                className={`font-mono text-xs px-3.5 py-1.5 rounded-full shrink-0 transition-all border ${
+                  selectedFilter === cat
+                    ? "bg-accent text-background border-accent font-bold shadow-lg"
+                    : "bg-surface text-text-secondary border-border hover:border-text-muted hover:text-text-primary"
+                }`}
+              >
+                {cat === "ALL" ? `ALL (0${count})` : `${cat.split(" / ")[0]} (0${count})`}
+              </button>
+            );
+          })}
         </div>
 
         {/* Project Showcase Grid */}
@@ -97,14 +103,14 @@ export default function ProjectsSection() {
               {/* Top Card Info */}
               <div>
                 <div className="flex items-center justify-between font-mono text-xs text-text-muted mb-4 border-b border-border pb-3">
-                  <span className="font-bold text-accent">Nº{project.number}</span>
-                  <span className="text-[10px] uppercase tracking-wider text-text-dim">
+                  <span className="font-bold text-accent">0{project.number}</span>
+                  <span className="text-[10px] uppercase tracking-wider text-text-dim truncate max-w-[140px]">
                     {project.category.split(" / ")[0]}
                   </span>
-                  <span className="text-[10px] text-text-secondary">{project.year}</span>
+                  <span className="text-[10px] text-text-secondary font-mono">{project.year}</span>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <h3 className="font-display font-extrabold text-2xl text-text-primary group-hover:text-accent transition-colors flex items-center justify-between">
                     <span>{project.title}</span>
                     <ArrowUpRight
@@ -112,10 +118,10 @@ export default function ProjectsSection() {
                       className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all text-accent"
                     />
                   </h3>
-                  <p className="font-mono text-xs text-accent-cyan">{project.subtitle}</p>
+                  <p className="font-mono text-xs text-accent-cyan font-medium">{project.subtitle}</p>
                 </div>
 
-                <p className="mt-4 text-xs text-text-secondary leading-relaxed line-clamp-3">
+                <p className="mt-4 text-xs sm:text-sm text-text-secondary leading-relaxed line-clamp-3">
                   {project.description}
                 </p>
               </div>
@@ -132,13 +138,13 @@ export default function ProjectsSection() {
                     </span>
                   ))}
                   {project.tech.length > 3 && (
-                    <span className="font-mono text-[10px] px-1.5 py-0.5 text-text-muted">
+                    <span className="font-mono text-[10px] px-1.5 py-0.5 text-text-muted font-mono">
                       +{project.tech.length - 3}
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between pt-2">
+                <div className="flex items-center justify-between pt-1">
                   <span className="font-mono text-[11px] text-accent font-semibold flex items-center gap-1 group-hover:underline">
                     EXPLORE DOSSIER →
                   </span>
@@ -151,7 +157,7 @@ export default function ProjectsSection() {
                         window.open(project.github, "_blank");
                       }}
                       data-cursor="LINK"
-                      title="Open GitHub"
+                      title="Open GitHub Source"
                       className="p-1.5 rounded-lg bg-surface-light text-text-muted hover:text-text-primary hover:bg-accent/20 transition-all border border-border"
                     >
                       <Github size={14} />
