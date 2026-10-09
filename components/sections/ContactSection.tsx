@@ -88,7 +88,7 @@ export default function ContactSection() {
               </span>
             </h2>
           </div>
-          <p className="max-w-md text-xs sm:text-sm text-text-secondary leading-relaxed">
+          <p className="max-w-md font-mono text-xs text-text-secondary leading-relaxed">
             Whether you&apos;re discussing applied AI research, full-stack architectural builds, cybersecurity initiatives, or speaking engagements—let&apos;s connect.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function ContactSection() {
             {/* Quick Copy Email Card */}
             <div className="p-6 bg-surface border border-border rounded-2xl space-y-4">
               <span className="font-mono text-xs text-text-muted uppercase tracking-widest block font-semibold">
-                DIRECT INBOX
+                // DIRECT INBOX
               </span>
               <div className="flex items-center justify-between gap-2 p-3.5 bg-surface-light rounded-xl border border-border">
                 <span className="font-mono text-xs sm:text-sm text-text-primary truncate font-medium">
@@ -120,7 +120,7 @@ export default function ContactSection() {
             {/* Coordinates & Local Time */}
             <div className="p-6 bg-surface border border-border rounded-2xl space-y-4 font-mono text-xs">
               <span className="text-text-muted uppercase tracking-widest block font-semibold">
-                LOCATION & AVAILABILITY
+                // LOCATION & AVAILABILITY
               </span>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-text-secondary">
@@ -150,7 +150,7 @@ export default function ContactSection() {
             {/* Social Channels */}
             <div className="p-6 bg-surface border border-border rounded-2xl space-y-4">
               <span className="font-mono text-xs text-text-muted uppercase tracking-widest block font-semibold">
-                SOCIAL & CODE PROFILES
+                // SOCIAL & CODE PROFILES
               </span>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -251,7 +251,7 @@ export default function ContactSection() {
                 type="submit"
                 disabled={isTransmitting}
                 data-cursor="SEND"
-                className="w-full py-3.5 bg-accent hover:opacity-90 text-background font-mono text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-accent/20 disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full py-3.5 bg-accent hover:opacity-90 text-background font-mono text-xs font-bold uppercase tracking-widest rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
               >
                 <Send size={14} />
                 <span>{isTransmitting ? "SENDING..." : "SEND MESSAGE"}</span>

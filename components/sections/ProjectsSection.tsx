@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, Github, Filter, Sparkles, Layers } from "lucide-react";
+import { ArrowUpRight, Github, Filter } from "lucide-react";
 import { projectsData, ProjectItem } from "@/data/projects";
 import { soundFx } from "@/lib/sound";
 import ProjectModal from "./ProjectModal";
@@ -51,8 +51,8 @@ export default function ProjectsSection() {
               </span>
             </h2>
           </div>
-          <p className="max-w-md text-xs sm:text-sm text-text-secondary leading-relaxed">
-            Real-world systems spanning medical OCR extraction, 3D geospatial telemetry, automated network threat detection, and ACID relational engines.
+          <p className="max-w-md font-mono text-xs text-text-secondary leading-relaxed">
+            Real-world platforms spanning health OCR extraction, 3D geospatial telemetry, automated network security anomaly detection, and ACID relational engines.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default function ProjectsSection() {
                   <span className="text-[10px] text-text-secondary font-mono">{project.year}</span>
                 </div>
 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <h3 className="font-display font-extrabold text-2xl text-text-primary group-hover:text-accent transition-colors flex items-center justify-between">
                     <span>{project.title}</span>
                     <ArrowUpRight
@@ -121,7 +121,7 @@ export default function ProjectsSection() {
                   <p className="font-mono text-xs text-accent-cyan font-medium">{project.subtitle}</p>
                 </div>
 
-                <p className="mt-4 text-xs sm:text-sm text-text-secondary leading-relaxed line-clamp-3">
+                <p className="mt-4 text-xs text-text-secondary leading-relaxed line-clamp-3">
                   {project.description}
                 </p>
               </div>
